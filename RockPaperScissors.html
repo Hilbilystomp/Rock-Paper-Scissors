@@ -1,24 +1,84 @@
 <script>
-    let cpuChoice = Math.floor(Math.random()*3)+1;
-    let playerChoice = "Rock";    
-    playerChoice = playerChoice.toLowerCase();    
+    let cpuChoice
+    let playerChoice  
+     
+    let score = 0;
     function computerPlay() {
+        cpuChoice = Math.floor(Math.random()*3)+1
         
         if (cpuChoice === 1 ){
-            console.log("Rock"); 
+            console.log("CPU has selected Rock"); 
              }            
         else if (cpuChoice === 2) {
-            console.log("Paper") ;
+            console.log("CPU has selected Paper") ;
              }             
-            else console.log("Scissors")  ;                    
+            else if (cpuChoice === 3) {
+            console.log("CPU has selected Scissors")  ;  
+            }                  
         }
     function playGame() {
-
+        playerChoice = prompt();
+        playerChoice = playerChoice.toLowerCase(); 
+        computerPlay()
+          
+        
         if  (playerChoice === "rock" && cpuChoice === 1) {
-           console.log("Tie Game!")     }     
+           console.log("Tie Game!") ;
+           score = score;            
+           return score;
+             }     
+         else if(playerChoice === "rock" && cpuChoice === 2) {
+            console.log("You Lose!");
+            score = score -1;
+            return score;
+        } else if(playerChoice === "rock" && cpuChoice === 3) {
+            console.log("You Win!");
+            score = score + 1;            
+            return score;
+        } else if (playerChoice === "paper" && cpuChoice === 1) {
+            console.log("You Win");
+            score = score + 1;
+            return score 
+        } else if (playerChoice === "paper" && cpuChoice === 2) {
+            console.log("Tie Game!");
+            score = score;
+            return score
+        }  else if (playerChoice === "paper" && cpuChoice === 3) {
+            console.log("You Lose!");
+            score = score -1;
+            return score
+        } else if (playerChoice === "scissors" && cpuChoice === 1) {
+            console.log("You Lose!");
+            score = score - 1;
+            return score
+        } else if (playerChoice === "scissors" && cpuChoice === 2) {
+            console.log("You Win!");
+            score = score +1;
+            return score
+        } else if (playerChoice === "scissors" && cpuChoice === 3) {
+            console.log("Tie Game!");
+            score = score;
+            return score
+        } else if (playerChoice != "rock" || playerChoice != "paper" || playerChoice != "scissors") {
+            playGame()
         }
-                  
-    computerPlay(); 
-    playGame();
+
+        }    
+    function playMatch() {
+        playGame()
+        playGame()
+        playGame()
+        playGame()
+        playGame()
+        console.log(score);
+        if (score > 0) {
+            console.log("You've won the match!");
+        } else if (score < 0 ) {
+            console.log("You've lost the match!");
+        } else (console.log("The match is a tie!"));
+        
+    }
+    
+playMatch()
     
 </script>
